@@ -1,9 +1,30 @@
 import React from 'react';
 import Table from 'react-bootstrap/Table';
+import { v4 as uuidv4 } from 'uuid';
 const LabourRecords = () => {
+  const workers = [
+    {
+      name: 'Kofi',
+      role: 'secretary',
+      department: 'hr',
+      category: 'permanent',
+      startDate: '03/05/2018',
+      endDate: 'TBD',
+      id: uuidv4(),
+    },
+    {
+      name: 'Kwame',
+      role: 'accountant',
+      department: 'finance',
+      category: 'permanent',
+      startDate: '03/05/2018',
+      endDate: 'TBD',
+      id: uuidv4(),
+    },
+  ];
   return (
     <>
-      <h2>LabourRecords</h2>
+      <h2>Labour Records</h2>
 
       <Table bordered hover responsive="sm">
         <thead>
@@ -18,21 +39,19 @@ const LabourRecords = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>2</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-            <td>Table cell</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            {/* {Array.from({ length: 12 }).map((_, index) => (
-              <td key={index}>Table cell {index}</td>
-            ))} */}
-          </tr>
+          {workers.map((item) => {
+            return (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.role}</td>
+                <td>{item.department}</td>
+                <td>{item.category}</td>
+                <td>{item.startDate}</td>
+                <td>{item.endDate}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </>
